@@ -8,6 +8,7 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { RolesModule } from './roles/roles.module';
 import * as cookieParser from 'cookie-parser';
 
 @Module({
@@ -34,6 +35,7 @@ import * as cookieParser from 'cookie-parser';
       }),
       inject: [ConfigService],
     }),
+    RolesModule,
   ],
 })
 export class AuthModule {
