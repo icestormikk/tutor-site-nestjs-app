@@ -21,6 +21,10 @@ export class UsersRepository {
     return this.prisma.user.findMany({ ...params });
   }
 
+  async findUser(params: { where?: Prisma.UserWhereInput }): Promise<User> {
+    return (await this.prisma.user.findMany({ ...params })).at(0);
+  }
+
   async updateUser(params: {
     where: Prisma.UserWhereUniqueInput;
     data: Prisma.UserUpdateInput;
