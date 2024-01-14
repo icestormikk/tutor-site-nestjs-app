@@ -9,6 +9,7 @@ import JwtAuthGuard from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/role.guard';
 import { HomeworksModule } from './homeworks/homeworks.module';
 import { SolutionsModule } from './solutions/solutions.module';
+import { TeacherResponsesModule } from './teacher-responses/teacher-responses.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { SolutionsModule } from './solutions/solutions.module';
     EventsModule,
     HomeworksModule,
     SolutionsModule,
+    TeacherResponsesModule,
   ],
   controllers: [AppController],
   providers: [
