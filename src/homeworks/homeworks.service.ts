@@ -10,6 +10,11 @@ import { CreateHomeworkDto } from './dto/create-homework.dto';
 import { UploadService } from 'src/upload/upload.service';
 import { UpdateHomeworkDto } from './dto/update-homework.dto';
 
+/**
+ * A service layer for manipulating objects of the Homework class
+ * @export
+ * @class HomeworksService
+ */
 @Injectable()
 export class HomeworksService {
   constructor(
@@ -17,6 +22,12 @@ export class HomeworksService {
     private readonly uploadService: UploadService,
   ) {}
 
+  /**
+   * Getting all objects of the Homework class that have specific parameter values
+   * @param {FindHomeworkDto} props the desired data of the Event object
+   * @return {*} all Event objects matching the query
+   * @memberof HomeworksService
+   */
   async findHomeworks(props: FindHomeworkDto) {
     try {
       return await this.homeworksRepository.findHomeworks({
@@ -35,6 +46,12 @@ export class HomeworksService {
     }
   }
 
+  /**
+   * Getting a single object of the Homework class that has the necessary parameters
+   * @param {FindHomeworkDto} props parameters that the desired object of the Homework class must have
+   * @return {*} the first object of the Event class that corresponds to the request parameters
+   * @memberof HomeworksService
+   */
   async findHomework(props: FindHomeworkDto) {
     try {
       return await this.homeworksRepository.findHomework({
@@ -52,6 +69,14 @@ export class HomeworksService {
     }
   }
 
+  /**
+   * Creating a new object of the Event class
+   * @param {string} userId the unique identifier of the user uploading the homework
+   * @param {CreateHomeworkDto} createHomeworkDto  object containing information about the new user
+   * @param {Express.Multer.File[]} files files attached to an object of the Homework class
+   * @return {*} a new object of the Homework class
+   * @memberof HomeworksService
+   */
   async uploadHomework(
     userId: string,
     createHomeworkDto: CreateHomeworkDto,
@@ -86,6 +111,15 @@ export class HomeworksService {
     }
   }
 
+  /**
+   * Updating an existing Homework class object
+   * @param {string} id the unique identifier of the Event class object to update
+   * @param {string} userId the unique identifier of the user uploading the homework
+   * @param {UpdateHomeworkDto} updateHomeworkDto new object parameters that need to be applied
+   * @param {Express.Multer.File[]} files files attached to an object of the Homework class
+   * @return {*} updated object of the Homework class
+   * @memberof HomeworksService
+   */
   async updateHomework(
     id: string,
     userId: string,
@@ -137,6 +171,11 @@ export class HomeworksService {
     }
   }
 
+  /**
+   * Deleting an existing object of the Homework class
+   * @param {string} id  the unique ID of the Homework object to delete
+   * @memberof HomeworksService
+   */
   async deleteHomework(id: string) {
     const homework = await this.homeworksRepository.findHomework({
       where: { id },

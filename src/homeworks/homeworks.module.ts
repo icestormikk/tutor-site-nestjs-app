@@ -5,6 +5,11 @@ import { HomeworksRepository } from './homeworks.repository';
 import { PrismaModule } from 'src/database/prisma.module';
 import { UploadModule } from 'src/upload/upload.module';
 
+/**
+ * A module for manipulating objects of the Event clas
+ * @export
+ * @class HomeworksModule
+ */
 @Module({
   controllers: [HomeworksController],
   providers: [HomeworksService, HomeworksRepository],
