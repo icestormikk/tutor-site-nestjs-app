@@ -5,6 +5,11 @@ import { PrismaModule } from 'src/database/prisma.module';
 import { UploadModule } from 'src/upload/upload.module';
 import { TeacherResponsesRepository } from './teacher-responses.repository';
 
+/**
+ * A module for manipulating objects of the TeacherResponse clas
+ * @export
+ * @class TeacherResponsesModule
+ */
 @Module({
   controllers: [TeacherResponsesController],
   providers: [TeacherResponsesService, TeacherResponsesRepository],

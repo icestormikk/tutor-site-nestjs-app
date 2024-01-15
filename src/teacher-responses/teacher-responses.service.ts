@@ -10,6 +10,11 @@ import { File } from '@prisma/client';
 import { UploadService } from 'src/upload/upload.service';
 import { join } from 'path';
 
+/**
+ * A service layer for manipulating objects of the TeacherResponse class
+ * @export
+ * @class TeacherResponsesService
+ */
 @Injectable()
 export class TeacherResponsesService {
   constructor(
@@ -17,6 +22,12 @@ export class TeacherResponsesService {
     private readonly uploadService: UploadService,
   ) {}
 
+  /**
+   * Getting all objects of the TeacherResponse class that have specific parameter values
+   * @param {FindResponseDto} props the desired data of the TeacherResponse object
+   * @return {*} all TeacherResponse objects matching the query
+   * @memberof TeacherResponsesService
+   */
   async findResponses(props: FindResponseDto) {
     try {
       return await this.teacherResponsesRepository.findTeacherResponses({
@@ -28,6 +39,12 @@ export class TeacherResponsesService {
     }
   }
 
+  /**
+   * Getting a single object of the TeacherResponse class that has the necessary parameters
+   * @param {FindResponseDto} props parameters that the desired object of the TeacherResponse class must have
+   * @return {*} the first object of the TeacherResponse class that corresponds to the request parameters
+   * @memberof TeacherResponsesService
+   */
   async findResponse(props: FindResponseDto) {
     try {
       return await this.teacherResponsesRepository.findTeacherResponse({
@@ -39,6 +56,13 @@ export class TeacherResponsesService {
     }
   }
 
+  /**
+   * Creating a new object of the TeacherResponse class
+   * @param {EditResponseDto} responseDto object containing information about the new response
+   * @param {Express.Multer.File[]} files files attached to an object of the TeacherResponse class
+   * @return {*} a new object of the TeacherResponse class
+   * @memberof TeacherResponsesService
+   */
   async uploadResponse(
     responseDto: EditResponseDto,
     files: Express.Multer.File[],
@@ -54,7 +78,7 @@ export class TeacherResponsesService {
         files,
       );
 
-      // TODO: add a trigger to automatically add a response to the solution
+      // TODO: add a trigger to automatically add and remove a response to the solution
       return await this.teacherResponsesRepository.createTeacherResponse({
         data: {
           text: responseDto.text,
@@ -81,6 +105,14 @@ export class TeacherResponsesService {
     }
   }
 
+  /**
+   * Updating an existing TeacherResponse class object
+   * @param {string} id the unique identifier of the TeacherResponse class object to update
+   * @param {EditResponseDto} responseDto new object parameters that need to be applied
+   * @param {Express.Multer.File[]} files files attached to an object of the TeacherResponse class
+   * @return {*} updated object of the TeacherResponse class
+   * @memberof TeacherResponsesService
+   */
   async updateReponse(
     id: string,
     responseDto: EditResponseDto,
@@ -133,6 +165,11 @@ export class TeacherResponsesService {
     }
   }
 
+  /**
+   * Deleting an existing object of the TeacherResponse class
+   * @param {string} id the unique ID of the TeacherResponse object to delete
+   * @memberof TeacherResponsesService
+   */
   async deleteResponse(id: string) {
     try {
       const response =

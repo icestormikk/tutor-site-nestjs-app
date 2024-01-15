@@ -23,7 +23,7 @@ export class SolutionsRepository {
   }
 
   /**
-   *  A method for searching for all solutions that match the passed parameters
+   * A method for searching for all solutions that match the passed parameters
    * @param {{
    *     skip?: number;
    *     take?: number;
@@ -63,7 +63,7 @@ export class SolutionsRepository {
   }
 
   /**
-   * Method for updating an existing Homework class object
+   * Method for updating an existing Solution class object
    * @param {{
    *     where: Prisma.SolutionWhereUniqueInput;
    *     data: Prisma.SolutionUpdateInput;

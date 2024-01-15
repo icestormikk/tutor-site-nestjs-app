@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 /**
- * An object with parameters for creating a new solution object
+ * An object with parameters for creating and updating a new Solution object
  * @export
  * @class EditSolutionDto
  */
