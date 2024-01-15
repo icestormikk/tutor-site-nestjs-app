@@ -5,6 +5,12 @@ import { ACCESS_ROLES_KEY } from '../decorators/roles.decorator';
 import { RolesService } from '../roles/roles.service';
 import { User } from '@prisma/client';
 
+/**
+ * A decorator to protect a path or a group of paths by checking the user role
+ * @export
+ * @class RolesGuard
+ * @implements {CanActivate}
+ */
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(

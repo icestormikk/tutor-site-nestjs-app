@@ -11,6 +11,11 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { RolesModule } from './roles/roles.module';
 import * as cookieParser from 'cookie-parser';
 
+/**
+ * A module for user authentication and authorization
+ * @export
+ * @class AuthModule
+ */
 @Module({
   exports: [AuthService],
   controllers: [AuthController],

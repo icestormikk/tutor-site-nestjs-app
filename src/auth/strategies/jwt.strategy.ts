@@ -5,6 +5,12 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { TokenPayload } from '../auth.service';
 import { UsersService } from '../users/users.service';
 
+/**
+ * The logic of protecting server paths using jwt tokens
+ * @export
+ * @class JwtStrategy
+ * @extends {PassportStrategy(Strategy)}
+ */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -21,6 +27,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
+  /**
+   * Verifying the correctness of the user's data presented in the token
+   * @param {TokenPayload} payload information about the user, with which it can be uniquely identified
+   * @return {*} user data (if the input data is correct)
+   * @memberof JwtStrategy
+   */
   async validate(payload: TokenPayload) {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

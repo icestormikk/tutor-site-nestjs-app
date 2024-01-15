@@ -11,6 +11,11 @@ export type TokenPayload = {
   id: string;
 };
 
+/**
+ * A service layer for user authentication and authorization
+ * @export
+ * @class UsersService
+ */
 @Injectable()
 export class AuthService {
   constructor(
@@ -19,6 +24,12 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  /**
+   * A method for user authentication, validation, and authorization
+   * @param {User} user the current user in the system
+   * @param {Response} response the server's response to the request
+   * @memberof AuthService
+   */
   async loginUser(user: User, response: Response) {
     const { id } = user;
 
@@ -34,6 +45,12 @@ export class AuthService {
     });
   }
 
+  /**
+   * A method for depriving the user of access to the system (removing the jwt token)
+   * @param {Response} response
+   * @return {*}  {Promise<void>}
+   * @memberof AuthService
+   */
   async logoutUser(response: Response): Promise<void> {
     response.cookie('Authentication', '', {
       httpOnly: true,
@@ -41,10 +58,13 @@ export class AuthService {
     });
   }
 
-  async validateUser({
-    email,
-    password,
-  }: LoginUserDto): Promise<Partial<User>> {
+  /**
+   * Validation of user authentication data
+   * @param {LoginUserDto} user data required for authentication
+   * @return {Promise<Partial<User>>} An object with user information (in case of successful verification)
+   * @memberof AuthService
+   */
+  async validateUser({ email, password }: LoginUserDto) {
     const user = await this.usersService.findUser({ email });
     const isPasswordsEqual = await compare(String(password), user.password);
 

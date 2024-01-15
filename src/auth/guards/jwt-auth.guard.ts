@@ -4,6 +4,12 @@ import { Observable } from 'rxjs';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 import { Reflector } from '@nestjs/core';
 
+/**
+ * A decorator for protecting a path or a group of paths using jwt token authorization
+ * @export
+ * @class JwtAuthGuard
+ * @extends {AuthGuard('jwt')}
+ */
 export default class JwtAuthGuard extends AuthGuard('jwt') {
   constructor(private reflector: Reflector = new Reflector()) {
     super();

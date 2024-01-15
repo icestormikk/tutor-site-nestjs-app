@@ -4,6 +4,11 @@ import { RolesController } from './roles.controller';
 import { PrismaModule } from 'src/database/prisma.module';
 import { RolesRepository } from './roles.repository';
 
+/**
+ * A module for manipulating objects of the UserRole class
+ * @export
+ * @class RolesModule
+ */
 @Global()
 @Module({
   controllers: [RolesController],

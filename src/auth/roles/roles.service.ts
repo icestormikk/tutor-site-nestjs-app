@@ -8,20 +8,45 @@ import { UserRole } from '@prisma/client';
 import { RolesRepository } from './roles.repository';
 import { CreateRoleDto } from './dto/create-role.dto';
 
+/**
+ * A service layer for manipulating objects of the UserRole class
+ * @export
+ * @class RolesService
+ */
 @Injectable()
 export class RolesService {
   constructor(private readonly rolesRepository: RolesRepository) {}
 
+  /**
+   * Getting all objects of the UserRole class that have specific parameter values
+   * @param {FindRoleDto} props the desired data of the UserRole object
+   * @return {Promise<UserRole[]>} all UserRole objects matching the query
+   * @memberof RolesService
+   */
   async getRoles(props: FindRoleDto): Promise<UserRole[]> {
-    return this.rolesRepository.findRoles({ where: { ...props } });
+    return this.rolesRepository.findRoles({
+      where: { title: { contains: props.title } },
+    });
   }
 
+  /**
+   * Getting a single object of the UserRole class that has the necessary parameters
+   * @param {FindRoleDto} props parameters that the desired object of the UserRole class must have
+   * @return {Promise<UserRole>} the first object of the UserRole class that corresponds to the request parameters
+   * @memberof RolesService
+   */
   async getRole(props: FindRoleDto): Promise<UserRole> {
-    return (
-      await this.rolesRepository.findRoles({ where: { ...props }, take: 1 })
-    ).at(0);
+    return await this.rolesRepository.findRole({
+      where: { title: { contains: props.title } },
+    });
   }
 
+  /**
+   * Creating a new object of the UserRole class
+   * @param {CreateRoleDto} an object containing information about the new role
+   * @return {Promise<UserRole>} a new object of the UserRole class
+   * @memberof RolesService
+   */
   async createRole({ title }: CreateRoleDto): Promise<UserRole> {
     const role = await this.getRole({ title });
 
@@ -39,6 +64,13 @@ export class RolesService {
     }
   }
 
+  /**
+   * Checking whether a user role belongs to a specific set of roles
+   * @param {string[]} targetRoleNames the set of roles that the user should belong to
+   * @param {string} userRoleId current user role
+   * @return {Promise<boolean>} the result of the check
+   * @memberof RolesService
+   */
   async isUserBelong(
     targetRoleNames: string[],
     userRoleId: string,

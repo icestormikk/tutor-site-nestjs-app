@@ -14,6 +14,9 @@ export const getCurrentUserByContext = (context: ExecutionContext) => {
   }
 };
 
+/**
+ * Decorator for getting the current user from the request
+ */
 export const CurrentUser = createParamDecorator(
   (_data: unknown, context: ExecutionContext) => {
     return getCurrentUserByContext(context);
