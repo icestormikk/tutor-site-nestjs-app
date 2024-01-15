@@ -6,7 +6,7 @@ import { UploadModule } from 'src/upload/upload.module';
 import { TeacherResponsesRepository } from './teacher-responses.repository';
 
 /**
- * A module for manipulating objects of the TeacherResponse clas
+ * A module for manipulating objects of the TeacherResponse class
  * @export
  * @class TeacherResponsesModule
  */

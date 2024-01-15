@@ -34,8 +34,8 @@ export class TeacherResponsesRepository {
    *     cursor?: Prisma.TeacherResponseWhereUniqueInput;
    *     where?: Prisma.TeacherResponseWhereInput;
    *     orderBy?: Prisma.TeacherResponseOrderByWithRelationInput;
-   *   }} params
-   * @return {*} the parameters of the desired responses, as well as the request parameters
+   *   }} params the parameters of the desired responses, as well as the request parameters
+   * @return {*} all responses that fit the search
    * @memberof TeacherResponsesRepository
    */
   async findTeacherResponses(params: {
