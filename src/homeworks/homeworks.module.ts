@@ -6,7 +6,7 @@ import { PrismaModule } from 'src/database/prisma.module';
 import { UploadModule } from 'src/upload/upload.module';
 
 /**
- * A module for manipulating objects of the Event clas
+ * A module for manipulating objects of the Homework clas
  * @export
  * @class HomeworksModule
  */

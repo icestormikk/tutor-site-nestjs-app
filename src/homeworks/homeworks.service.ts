@@ -24,8 +24,8 @@ export class HomeworksService {
 
   /**
    * Getting all objects of the Homework class that have specific parameter values
-   * @param {FindHomeworkDto} props the desired data of the Event object
-   * @return {*} all Event objects matching the query
+   * @param {FindHomeworkDto} props the desired data of the Homework object
+   * @return {*} all Homework objects matching the query
    * @memberof HomeworksService
    */
   async findHomeworks(props: FindHomeworkDto) {
@@ -49,7 +49,7 @@ export class HomeworksService {
   /**
    * Getting a single object of the Homework class that has the necessary parameters
    * @param {FindHomeworkDto} props parameters that the desired object of the Homework class must have
-   * @return {*} the first object of the Event class that corresponds to the request parameters
+   * @return {*} the first object of the Homework class that corresponds to the request parameters
    * @memberof HomeworksService
    */
   async findHomework(props: FindHomeworkDto) {
@@ -70,9 +70,9 @@ export class HomeworksService {
   }
 
   /**
-   * Creating a new object of the Event class
+   * Creating a new object of the Homework class
    * @param {string} userId the unique identifier of the user uploading the homework
-   * @param {CreateHomeworkDto} createHomeworkDto  object containing information about the new user
+   * @param {CreateHomeworkDto} createHomeworkDto object containing information about the new homework
    * @param {Express.Multer.File[]} files files attached to an object of the Homework class
    * @return {*} a new object of the Homework class
    * @memberof HomeworksService
@@ -113,7 +113,7 @@ export class HomeworksService {
 
   /**
    * Updating an existing Homework class object
-   * @param {string} id the unique identifier of the Event class object to update
+   * @param {string} id the unique identifier of the Homework class object to update
    * @param {string} userId the unique identifier of the user uploading the homework
    * @param {UpdateHomeworkDto} updateHomeworkDto new object parameters that need to be applied
    * @param {Express.Multer.File[]} files files attached to an object of the Homework class
@@ -173,7 +173,7 @@ export class HomeworksService {
 
   /**
    * Deleting an existing object of the Homework class
-   * @param {string} id  the unique ID of the Homework object to delete
+   * @param {string} id the unique ID of the Homework object to delete
    * @memberof HomeworksService
    */
   async deleteHomework(id: string) {

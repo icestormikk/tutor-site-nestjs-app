@@ -65,7 +65,7 @@ export class HomeworksRepository {
    * @param {{
    *     where: Prisma.HomeworkWhereUniqueInput;
    *     data: Prisma.HomeworkUpdateInput;
-   *   }} params  the parameters of the homework to update, as well as new data
+   *   }} params the parameters of the homework to update, as well as new data
    * @return {*} updated Homework class object
    * @memberof HomeworksRepository
    */
@@ -79,7 +79,7 @@ export class HomeworksRepository {
 
   /**
    * Method for deleting an existing Homework class object
-   * @param {{ where: Prisma.HomeworkWhereUniqueInput }} params  parameters that can be used to uniquely identify the homework
+   * @param {{ where: Prisma.HomeworkWhereUniqueInput }} params parameters that can be used to uniquely identify the homework
    * @return {*} a deleted object of the Homework class
    * @memberof HomeworksRepository
    */
