@@ -10,6 +10,11 @@ import { File } from '@prisma/client';
 import { UploadService } from 'src/upload/upload.service';
 import { join } from 'path';
 
+/**
+ * A service layer for manipulating objects of the Solution class
+ * @export
+ * @class SolutionsService
+ */
 @Injectable()
 export class SolutionsService {
   constructor(
@@ -17,6 +22,12 @@ export class SolutionsService {
     private readonly uploadService: UploadService,
   ) {}
 
+  /**
+   * Getting all objects of the Solution class that have specific parameter values
+   * @param {FindSolutionDto} props the desired data of the Solution object
+   * @return {*} all Solution objects matching the query
+   * @memberof SolutionsService
+   */
   async findSolutions(props: FindSolutionDto) {
     try {
       return await this.solutionsRepository.findSolutions({
@@ -28,6 +39,12 @@ export class SolutionsService {
     }
   }
 
+  /**
+   * Getting a single object of the Solution class that has the necessary parameters
+   * @param {FindSolutionDto} props parameters that the desired object of the Solution class must have
+   * @return {*} the first object of the Solution class that corresponds to the request parameters
+   * @memberof SolutionsService
+   */
   async findSolution(props: FindSolutionDto) {
     try {
       return await this.solutionsRepository.findSolution({
@@ -39,6 +56,14 @@ export class SolutionsService {
     }
   }
 
+  /**
+   * Creating a new object of the Solution class
+   * @param {string} userId the unique identifier of the user uploading the solution
+   * @param {EditSolutionDto} createSolutionDto object containing information about the new solution
+   * @param {Express.Multer.File[]} files files attached to an object of the Solution class
+   * @return {*} a new object of the Solution class
+   * @memberof SolutionsService
+   */
   async uploadSolution(
     userId: string,
     createSolutionDto: EditSolutionDto,
@@ -75,6 +100,15 @@ export class SolutionsService {
     }
   }
 
+  /**
+   * Updating an existing Solution class object
+   * @param {string} id the unique identifier of the Solution class object to update
+   * @param {string} userId the unique identifier of the user uploading the solution
+   * @param {EditSolutionDto} editSolutionDto new object parameters that need to be applied
+   * @param {Express.Multer.File[]} files files attached to an object of the Solution class
+   * @return {*} updated object of the Solution class
+   * @memberof SolutionsService
+   */
   async updateSolution(
     id: string,
     userId: string,
@@ -124,6 +158,11 @@ export class SolutionsService {
     }
   }
 
+  /**
+   * Deleting an existing object of the Solution class
+   * @param {string} id the unique ID of the Solution object to delete
+   * @memberof SolutionsService
+   */
   async deleteSolution(id: string) {
     const solution = await this.solutionsRepository.findSolution({
       where: { id },
