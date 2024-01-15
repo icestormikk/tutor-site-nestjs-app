@@ -21,7 +21,7 @@ export class UsersService {
   /**
    * Getting all objects of the User class that have specific parameter values
    * @param {FindUserDto} props the desired data of the User object
-   * @return {Promise<User[]>} all Users objects matching the query
+   * @return {Promise<User[]>} all User objects matching the query
    * @memberof UsersService
    */
   async findUsers(props: FindUserDto): Promise<User[]> {
@@ -42,7 +42,7 @@ export class UsersService {
 
   /**
    * Creating a new object of the User class
-   * @param {RegisterUserDto} registerUserDto bject containing information about the new user
+   * @param {RegisterUserDto} registerUserDto object containing information about the new user
    * @return {Promise<User>} a new object of the User class
    * @memberof UsersService
    */
