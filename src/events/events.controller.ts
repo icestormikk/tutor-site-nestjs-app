@@ -32,7 +32,7 @@ export class EventsController {
    * @memberof EventsController
    */
   @Get()
-  async findAll(@Body() props: FindEventDto): Promise<Event[]> {
+  async findEvents(@Body() props: FindEventDto): Promise<Event[]> {
     return this.eventsService.getEvents(props);
   }
 
@@ -43,7 +43,7 @@ export class EventsController {
    * @memberof EventsController
    */
   @Post()
-  async create(@Body() createEventDto: CreateEventDto) {
+  async createEvent(@Body() createEventDto: CreateEventDto) {
     return this.eventsService.createEvent(createEventDto);
   }
 
@@ -55,7 +55,7 @@ export class EventsController {
    * @memberof EventsController
    */
   @Put()
-  async update(
+  async updateEvent(
     @Query('id') id: string,
     @Body() updateEventDto: UpdateEventDto,
   ): Promise<Event> {
