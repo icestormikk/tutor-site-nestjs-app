@@ -6,6 +6,11 @@ import { UploadRepository } from './upload.repository';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 
+/**
+ * A module for manipulating objects of the File class
+ * @export
+ * @class UploadModule
+ */
 @Module({
   controllers: [UploadController],
   providers: [UploadService, UploadRepository],

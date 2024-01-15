@@ -9,6 +9,11 @@ import { randomUUID } from 'crypto';
 import { writeFile } from 'fs/promises';
 import { Response } from 'express';
 
+/**
+ * A service layer for manipulating objects of the File class
+ * @export
+ * @class UploadService
+ */
 @Injectable()
 export class UploadService {
   constructor(
@@ -16,16 +21,36 @@ export class UploadService {
     private readonly uploadRepository: UploadRepository,
   ) {}
 
+  /**
+   * Getting all objects of the File class that have specific parameter values
+   * @param {FindFileDto} props the desired data of the File object
+   * @return {Promise<File[]>} all File objects matching the query
+   * @memberof UploadService
+   */
   async getFiles(props: FindFileDto): Promise<File[]> {
     return this.uploadRepository.findFiles({ where: { ...props } });
   }
 
+  /**
+   * Issuing the file contained on the server to the user
+   * @param {string} id the unique identifier of the File class object
+   * @param {Response} response a Response object containing information about the server's response to the request
+   * @memberof UploadService
+   */
   async download(id: string, response: Response) {
     const file = await this.uploadRepository.findFile({ where: { id } });
     const absolute = join(process.cwd(), file.relative);
     response.sendFile(absolute);
   }
 
+  /**
+   * Uploading files from users to the server
+   * @param {string} ownerId the unique identifier of the user who owns the file
+   * @param {string} targetDir the target folder to which the file will be uploaded
+   * @param {Express.Multer.File[]} files files to download
+   * @return {Promise<File[]>} objects containing information about uploaded files
+   * @memberof UploadService
+   */
   async upload(
     ownerId: string,
     targetDir: string,
@@ -76,6 +101,11 @@ export class UploadService {
     return result;
   }
 
+  /**
+   * Deleting files from the server
+   * @param {string} id the unique identifier of the File class object
+   * @memberof UploadService
+   */
   async delete(id: string): Promise<void> {
     const file = await this.uploadRepository.findFile({ where: { id } });
     const { relative } = file;
