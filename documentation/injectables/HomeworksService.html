@@ -1,0 +1,991 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>tutor-site-nestjs-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">tutor-site-nestjs-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >HomeworksService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/homeworks/homeworks.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A service layer for manipulating objects of the Homework class</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteHomework" >deleteHomework</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findHomework" >findHomework</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findHomeworks" >findHomeworks</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateHomework" >updateHomework</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#uploadHomework" >uploadHomework</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(homeworksRepository: <a href="../injectables/HomeworksRepository.html" target="_self">HomeworksRepository</a>, uploadService: <a href="../injectables/UploadService.html" target="_self">UploadService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/homeworks/homeworks.service.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>homeworksRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HomeworksRepository.html" target="_self" >HomeworksRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>uploadService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UploadService.html" target="_self" >UploadService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteHomework"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteHomework</b></span>
+                        <a href="#deleteHomework"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteHomework(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">src/homeworks/homeworks.service.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Deleting an existing object of the Homework class</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the unique ID of the Homework object to delete</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findHomework"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findHomework</b></span>
+                        <a href="#findHomework"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findHomework(props: <a href="../classes/FindHomeworkDto.html" target="_self">FindHomeworkDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/homeworks/homeworks.service.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Getting a single object of the Homework class that has the necessary parameters</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>props</td>
+                                            <td>
+                                                            <code><a href="../classes/FindHomeworkDto.html" target="_self" >FindHomeworkDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>parameters that the desired object of the Homework class must have</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>the first object of the Homework class that corresponds to the request parameters</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findHomeworks"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findHomeworks</b></span>
+                        <a href="#findHomeworks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findHomeworks(props: <a href="../classes/FindHomeworkDto.html" target="_self">FindHomeworkDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/homeworks/homeworks.service.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Getting all objects of the Homework class that have specific parameter values</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>props</td>
+                                            <td>
+                                                            <code><a href="../classes/FindHomeworkDto.html" target="_self" >FindHomeworkDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the desired data of the Homework object</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>all Homework objects matching the query</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHomework"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateHomework</b></span>
+                        <a href="#updateHomework"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateHomework(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateHomeworkDto: <a href="../classes/UpdateHomeworkDto.html" target="_self">UpdateHomeworkDto</a>, files: Express.Multer.File[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/homeworks/homeworks.service.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updating an existing Homework class object</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the unique identifier of the Homework class object to update</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the unique identifier of the user uploading the homework</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>updateHomeworkDto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateHomeworkDto.html" target="_self" >UpdateHomeworkDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>new object parameters that need to be applied</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>files</td>
+                                            <td>
+                                                        <code>Express.Multer.File[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>files attached to an object of the Homework class</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>updated object of the Homework class</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadHomework"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>uploadHomework</b></span>
+                        <a href="#uploadHomework"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>uploadHomework(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createHomeworkDto: <a href="../classes/CreateHomeworkDto.html" target="_self">CreateHomeworkDto</a>, files: Express.Multer.File[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/homeworks/homeworks.service.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creating a new object of the Homework class</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the unique identifier of the user uploading the homework</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>createHomeworkDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateHomeworkDto.html" target="_self" >CreateHomeworkDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object containing information about the new homework</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>files</td>
+                                            <td>
+                                                        <code>Express.Multer.File[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>files attached to an object of the Homework class</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>a new object of the Homework class</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from &#x27;@nestjs/common&#x27;;
+import { HomeworksRepository } from &#x27;./homeworks.repository&#x27;;
+import { File } from &#x27;@prisma/client&#x27;;
+import { FindHomeworkDto } from &#x27;./dto/find-homework.dto&#x27;;
+import { CreateHomeworkDto } from &#x27;./dto/create-homework.dto&#x27;;
+import { UploadService } from &#x27;src/upload/upload.service&#x27;;
+import { UpdateHomeworkDto } from &#x27;./dto/update-homework.dto&#x27;;
+
+/**
+ * A service layer for manipulating objects of the Homework class
+ * @export
+ * @class HomeworksService
+ */
+@Injectable()
+export class HomeworksService {
+  constructor(
+    private readonly homeworksRepository: HomeworksRepository,
+    private readonly uploadService: UploadService,
+  ) {}
+
+  /**
+   * Getting all objects of the Homework class that have specific parameter values
+   * @param {FindHomeworkDto} props the desired data of the Homework object
+   * @return {*} all Homework objects matching the query
+   * @memberof HomeworksService
+   */
+  async findHomeworks(props: FindHomeworkDto) {
+    try {
+      return await this.homeworksRepository.findHomeworks({
+        where: {
+          ...props,
+          title: { contains: props.title },
+          description: { contains: props.description },
+          supportedFileTypes: {
+            contains: props.supportedFileTypes?.join(&#x27;,&#x27;) || &#x27;&#x27;,
+          },
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      throw new BadRequestException();
+    }
+  }
+
+  /**
+   * Getting a single object of the Homework class that has the necessary parameters
+   * @param {FindHomeworkDto} props parameters that the desired object of the Homework class must have
+   * @return {*} the first object of the Homework class that corresponds to the request parameters
+   * @memberof HomeworksService
+   */
+  async findHomework(props: FindHomeworkDto) {
+    try {
+      return await this.homeworksRepository.findHomework({
+        where: {
+          ...props,
+          description: { contains: props.description },
+          supportedFileTypes: {
+            contains: props.supportedFileTypes?.join(&#x27;,&#x27;) || &#x27;&#x27;,
+          },
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      throw new BadRequestException();
+    }
+  }
+
+  /**
+   * Creating a new object of the Homework class
+   * @param {string} userId the unique identifier of the user uploading the homework
+   * @param {CreateHomeworkDto} createHomeworkDto object containing information about the new homework
+   * @param {Express.Multer.File[]} files files attached to an object of the Homework class
+   * @return {*} a new object of the Homework class
+   * @memberof HomeworksService
+   */
+  async uploadHomework(
+    userId: string,
+    createHomeworkDto: CreateHomeworkDto,
+    files: Express.Multer.File[],
+  ) {
+    const { supportedFileTypes, teacher } &#x3D; createHomeworkDto;
+    let uploadedImages: File[] &#x3D; [];
+
+    try {
+      uploadedImages &#x3D; await this.uploadService.upload(userId, &#x27;images&#x27;, files);
+
+      return await this.homeworksRepository.createHomework({
+        data: {
+          ...createHomeworkDto,
+          images: {
+            connect: uploadedImages.map((image) &#x3D;&gt; {
+              return { id: image.id };
+            }),
+          },
+          teacher: {
+            connect: { id: teacher },
+          },
+          supportedFileTypes: supportedFileTypes.join(&#x27;,&#x27;),
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      await Promise.all(
+        uploadedImages.map(async (file) &#x3D;&gt; this.uploadService.delete(file.id)),
+      );
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Updating an existing Homework class object
+   * @param {string} id the unique identifier of the Homework class object to update
+   * @param {string} userId the unique identifier of the user uploading the homework
+   * @param {UpdateHomeworkDto} updateHomeworkDto new object parameters that need to be applied
+   * @param {Express.Multer.File[]} files files attached to an object of the Homework class
+   * @return {*} updated object of the Homework class
+   * @memberof HomeworksService
+   */
+  async updateHomework(
+    id: string,
+    userId: string,
+    updateHomeworkDto: UpdateHomeworkDto,
+    files: Express.Multer.File[],
+  ) {
+    let newImages: File[] &#x3D; null;
+    try {
+      const { supportedFileTypes, teacher } &#x3D; updateHomeworkDto;
+
+      const homework &#x3D; await this.homeworksRepository.findHomework({
+        where: { id },
+      });
+
+      if (files &amp;&amp; files.length &gt; 0) {
+        newImages &#x3D; await this.uploadService.upload(userId, &#x27;images&#x27;, files);
+
+        await Promise.all(
+          homework.images.map(async (image) &#x3D;&gt; {
+            return this.uploadService.delete(image.id);
+          }),
+        );
+      }
+
+      return await this.homeworksRepository.updateHomework({
+        where: { id },
+        data: {
+          ...updateHomeworkDto,
+          images: {
+            connect: newImages
+              ? newImages.map((image) &#x3D;&gt; {
+                  return { id: image.id };
+                })
+              : homework.images,
+          },
+          teacher: {
+            connect: { id: teacher || homework.teacherId },
+          },
+          supportedFileTypes:
+            supportedFileTypes?.join(&#x27;,&#x27;) || homework.supportedFileTypes,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      await Promise.all(
+        newImages.map(async (image) &#x3D;&gt; this.uploadService.delete(image.id)),
+      );
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * Deleting an existing object of the Homework class
+   * @param {string} id the unique ID of the Homework object to delete
+   * @memberof HomeworksService
+   */
+  async deleteHomework(id: string) {
+    const homework &#x3D; await this.homeworksRepository.findHomework({
+      where: { id },
+    });
+
+    try {
+      await this.homeworksRepository.deleteHomework({ where: { id } });
+      await Promise.all(
+        homework.images.map(async (image) &#x3D;&gt; {
+          return this.uploadService.delete(image.id);
+        }),
+      );
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerErrorException();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeworksService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
