@@ -55,7 +55,7 @@ export class EventsRepository {
   }
 
   /**
-   * Method for updating an existing User class object
+   * Method for updating an existing Event class object
    * @param {{
    *     where: Prisma.EventWhereUniqueInput;
    *     data: Prisma.EventUpdateInput;
