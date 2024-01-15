@@ -11,6 +11,11 @@ import { HomeworksModule } from './homeworks/homeworks.module';
 import { SolutionsModule } from './solutions/solutions.module';
 import { TeacherResponsesModule } from './teacher-responses/teacher-responses.module';
 
+/**
+ * A module containing settings common to the entire application
+ * @export
+ * @class AppModule
+ */
 @Module({
   imports: [
     AuthModule,
