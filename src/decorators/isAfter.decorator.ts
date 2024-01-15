@@ -6,6 +6,13 @@ import {
   registerDecorator,
 } from 'class-validator';
 
+/**
+ * A decorator to verify that the marked field is a date that is later than the value in the 'property' field
+ * @export
+ * @param {string} property the name of the field to compare the current field with
+ * @param {ValidationOptions} [validationOptions] additional validation parameters
+ * @return {*} function for parameter validation
+ */
 export function IsAfter(
   property: string,
   validationOptions?: ValidationOptions,
@@ -21,6 +28,11 @@ export function IsAfter(
   };
 }
 
+/**
+ * The logic of the isAfter decorator
+ * @class IsAfterConstraint
+ * @implements {ValidatorConstraintInterface}
+ */
 @ValidatorConstraint({ name: 'IsAfter' })
 class IsAfterConstraint implements ValidatorConstraintInterface {
   validate(
