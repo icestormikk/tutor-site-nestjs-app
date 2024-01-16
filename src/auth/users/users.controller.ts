@@ -3,12 +3,15 @@ import { UsersService } from './users.service';
 import { User } from '@prisma/client';
 import { FindUserDto } from './dto/find-user.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
+import { Roles } from '../decorators/roles.decorator';
+import { ROLES } from '../roles/roles.enum';
 
 /**
  * A controller for processing requests for manipulating objects of the User class
  * @export
  * @class UsersController
  */
+@Roles(ROLES.ADMIN)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

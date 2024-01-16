@@ -78,7 +78,6 @@ export class TeacherResponsesService {
         files,
       );
 
-      // TODO: add a trigger to automatically add and remove a response to the solution
       return await this.teacherResponsesRepository.createTeacherResponse({
         data: {
           text: responseDto.text,
@@ -86,9 +85,7 @@ export class TeacherResponsesService {
           teacher: {
             connect: { id: teacherId },
           },
-          solution: {
-            connect: { id: solutionId },
-          },
+          solutionId,
           files: {
             connect: uploadedFiles.map((file) => {
               return { id: file.id };
@@ -146,9 +143,7 @@ export class TeacherResponsesService {
           teacher: {
             connect: { id: teacherId },
           },
-          solution: {
-            connect: { id: solutionId },
-          },
+          solutionId,
           files: {
             connect: uploadedFiles.map((file) => {
               return { id: file.id };
